@@ -9,6 +9,8 @@ import com.example.data.data_source.current_weather.remote.CurrentWeatherRemoteD
 import com.example.data.data_source.current_weather.remote.CurrentWeatherRemoteDataSourceImpl
 import com.example.data.data_source.forecast_weather.remote.ForecastWeatherRemoteDataSource
 import com.example.data.data_source.forecast_weather.remote.ForecastWeatherRemoteDataSourceImpl
+import com.example.weatherapp.data.data_source.ThemeDataSource
+import com.example.weatherapp.data.data_source.ThemeDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,5 +48,13 @@ object DataSourceModule {
         api: WeatherApi
     ): ForecastWeatherRemoteDataSource =
         ForecastWeatherRemoteDataSourceImpl(api)
+
+
+    @Provides
+    @Singleton
+    fun themeDataSource(
+        sharedPreferences: SharedPreferences
+    ): ThemeDataSource =
+        ThemeDataSourceImpl(sharedPreferences)
 
 }

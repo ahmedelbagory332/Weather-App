@@ -7,6 +7,9 @@ import com.example.data.repo.ForecastWeatherRepoImpl
 import com.example.data.repo.WeatherRepoImpl
 import com.example.features.forecast_weather_screen.domain.repo.ForecastWeatherRepo
 import com.example.features.weather_screen.domain.repo.WeatherRepo
+import com.example.weatherapp.data.data_source.ThemeDataSource
+import com.example.weatherapp.data.repo.MainRepoImpl
+import com.example.weatherapp.domain.repo.MainRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,5 +34,12 @@ object RepoModule {
         forecastWeatherRemoteDataSource: ForecastWeatherRemoteDataSource,
     ): ForecastWeatherRepo =
         ForecastWeatherRepoImpl(forecastWeatherRemoteDataSource)
+
+    @Provides
+    @Singleton
+    fun mainRepository(
+        themeDataSource: ThemeDataSource,
+    ): MainRepo =
+        MainRepoImpl(themeDataSource)
 
 }

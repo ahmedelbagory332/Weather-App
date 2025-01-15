@@ -1,8 +1,12 @@
 package com.example.features.weather_screen.presentaion
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -27,6 +31,7 @@ import com.example.features.weather_screen.presentaion.widget.SearchBar
 @Composable
 fun WeatherScreen(
     mainNavController: NavHostController,
+    onThemeClick: () -> Unit,
     weatherViewModel: WeatherViewModel = hiltViewModel()
 ) {
     val focusRequester = remember { FocusRequester() }
@@ -34,7 +39,13 @@ fun WeatherScreen(
     val uiState by weatherViewModel.weatherState.collectAsState()
     Scaffold(modifier = Modifier.fillMaxSize(),
         topBar = {
-            TopBar(title = stringResource(R.string.weather))
+            TopBar(title = stringResource(R.string.weather), menu = {
+                Icon(
+                    modifier = Modifier.clickable { onThemeClick() },
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = null
+                )
+            })
         }) { innerPadding ->
         Column(
             modifier = Modifier
