@@ -77,4 +77,6 @@ dependencies {
     //navigation
     implementation(libs.hilt.navigation.compose)
     implementation(libs.androidx.navigation.compose)
+    // my lib
+    implementation(project(":WeatherLib"))
 }

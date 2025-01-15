@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.core.Units
 import com.example.core.WeatherType
 import com.example.features.weather_screen.domain.entity.CurrentWeatherModel
+import com.example.weatherlib.WeatherFormatter
 import kotlin.math.roundToInt
 
 @Composable
@@ -36,7 +37,7 @@ fun WeatherTypes(modifier: Modifier = Modifier, weather : CurrentWeatherModel) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             WeatherTypeItem(
-                conditionValue = "${weather.windSpeed.roundToInt()} ${Units.WindSpeedUnit.name}",
+                conditionValue = WeatherFormatter.formatWindSpeed(weather.windSpeed.toDouble()),
                 conditionLabel = WeatherType.WindSpeed.name
             )
             VerticalDivider()
