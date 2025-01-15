@@ -31,6 +31,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        buildConfig = true
+    }
+
+    buildTypes {
+        configureEach {
+            buildConfigField("String", "API_Key", "\"f7f555eebbc8409a917238d185464cd5\"")
+        }
+    }
 }
 
 dependencies {
@@ -38,6 +47,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(project(":features"))
+    implementation(project(":core"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

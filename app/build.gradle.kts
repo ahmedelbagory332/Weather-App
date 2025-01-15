@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     kotlin("kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -60,6 +61,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(project(":core"))
+    implementation(project(":features"))
+    implementation(project(":data"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -75,4 +79,8 @@ dependencies {
     kapt(libs.dagger.hilt.compiler)
     //logging-interceptor
     implementation(libs.logging.interceptor)
+    //navigation
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
+
 }
