@@ -1,7 +1,7 @@
 name: AndroidBuild
 on:
   push:
-    branches : [ main ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -18,12 +18,12 @@ jobs:
           distribution: 'adopt'
           cache: gradle
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Run lint
         run: ./gradlew lint
         continue-on-error: false
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
 
   unit-tests:
     name: Unit Tests
@@ -40,21 +40,21 @@ jobs:
           distribution: 'adopt'
           cache: gradle
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Run unit tests
         run: ./gradlew test
         continue-on-error: false
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-
   build:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     needs: unit-tests
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
-      - name: Setup Java Jdk
+      - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'
