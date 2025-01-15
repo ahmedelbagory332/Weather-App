@@ -14,8 +14,8 @@ class CurrentWeatherUseCase @Inject constructor(
     operator fun invoke(city: String): Flow<Resource<CurrentWeatherModel>> = flow {
         try {
             emit(Resource.Loading<CurrentWeatherModel>())
-            val genres = repository.getCurrentWeather(city)
-            emit(Resource.Success<CurrentWeatherModel>(genres))
+            val weather = repository.getCurrentWeather(city)
+            emit(Resource.Success<CurrentWeatherModel>(weather))
         } catch (e: Exception) {
             emit(Resource.Error<CurrentWeatherModel>("${e.localizedMessage} : An unexpected error happened"))
         }

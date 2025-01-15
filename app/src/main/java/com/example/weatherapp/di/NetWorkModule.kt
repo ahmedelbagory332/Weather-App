@@ -1,15 +1,11 @@
-package com.example.weatherapp
+package com.example.weatherapp.di
 
-import android.content.Context
-import android.content.SharedPreferences
 import com.example.data.BuildConfig
-import com.example.data.remote.WeatherApi
-import com.example.data.repo.WeatherRepoImpl
-import com.example.features.weather_screen.domain.repo.WeatherRepo
+import com.example.data.api_service.WeatherApi
+import com.example.weatherapp.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -19,8 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
-    private const val PREF_NAME = "my_preferences"
+object NetWorkModule {
 
     @Provides
     @Singleton
@@ -59,20 +54,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-    }
-
-    @Provides
-    @Singleton
     fun provideRestaurantApi(retrofit: Retrofit): WeatherApi =
         retrofit.create(WeatherApi::class.java)
 
-    @Provides
-    @Singleton
-    fun weatherRepository(
-        api: WeatherApi,
-        sharedPreferences: SharedPreferences
-    ): WeatherRepo =
-        WeatherRepoImpl(api, sharedPreferences)
 }

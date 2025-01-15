@@ -1,4 +1,4 @@
-package com.example.data.remote
+package com.example.data.api_service.entity
 
 import com.google.gson.annotations.SerializedName
 
