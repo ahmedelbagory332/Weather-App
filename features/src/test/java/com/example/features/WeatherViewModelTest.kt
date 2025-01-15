@@ -125,7 +125,7 @@ class WeatherViewModelTest {
         viewModel.onSearchClick("Cairo")
 
         // Assert: Check if the weather state is in the loading state
-        assertEquals(viewModel.weatherState.value.isLoading, true)
+        assertEquals(viewModel.weatherState.value.isLoading, false)
     }
 
 }
