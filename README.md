@@ -23,4 +23,7 @@
     <td><img src="https://github.com/user-attachments/assets/a51462ae-55be-47c9-a6e7-0a7520436659" width=270 height=480></td>
   </tr>
  </table>
+ 
+## CI/CD
 
+![image](https://github.com/user-attachments/assets/fe7785f6-082f-487c-9b20-bad164cf35ef)
